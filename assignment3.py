@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import redis
+
 import os
 import sys
 import redis
@@ -18,6 +20,13 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, ImageMessage, VideoMessage, FileMessage, StickerMessage, StickerSendMessage
 )
 from linebot.utils import PY3
+
+# fill in the following.
+HOST = "redis-13333.c56.east-us.azure.cloud.redislabs.com"
+PWD = " ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
+PORT = "13333"
+
+redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
 
 app = Flask(__name__)
 
@@ -59,15 +68,6 @@ def callback():
             continue
         if isinstance(event.message, TextMessage):
             handle_TextMessage(event)
-        if isinstance(event.message, ImageMessage):
-            handle_ImageMessage(event)
-        if isinstance(event.message, VideoMessage):
-            handle_VideoMessage(event)
-        if isinstance(event.message, FileMessage):
-            handle_FileMessage(event)
-        if isinstance(event.message, StickerMessage):
-            handle_StickerMessage(event)
-
         if not isinstance(event, MessageEvent):
             continue
         if not isinstance(event.message, TextMessage):
@@ -84,35 +84,8 @@ def handle_TextMessage(event):
         TextSendMessage(msg)
     )
 
-# Handler function for Sticker Message
-def handle_StickerMessage(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        StickerSendMessage(
-            package_id=event.message.package_id,
-            sticker_id=event.message.sticker_id)
-    )
 
-# Handler function for Image Message
-def handle_ImageMessage(event):
-    line_bot_api.reply_message(
-	event.reply_token,
-	TextSendMessage(text="Nice image!")
-    )
 
-# Handler function for Video Message
-def handle_VideoMessage(event):
-    line_bot_api.reply_message(
-	event.reply_token,
-	TextSendMessage(text="Nice video!")
-    )
-
-# Handler function for File Message
-def handle_FileMessage(event):
-    line_bot_api.reply_message(
-	event.reply_token,
-	TextSendMessage(text="Nice file!")
-    )
 
 if __name__ == "__main__":
     arg_parser = ArgumentParser(
