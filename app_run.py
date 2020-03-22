@@ -56,4 +56,5 @@ def reply_text_message(event):
 #     app.run()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=heroku_port)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
