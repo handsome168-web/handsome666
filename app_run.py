@@ -7,7 +7,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from urllib.request import urlopen
 import configparser
 from linebot.models import *
-from custom_models import ChannelTalks #, ChannelFlex, utils
+# from custom_models import ChannelTalks #, ChannelFlex, utils
 
 app = Flask(__name__)
 
@@ -56,5 +56,5 @@ def reply_text_message(event):
 #     app.run()
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    heroku_port = os.getenv('PORT', None)
+    app.run(host='0.0.0.0', port=heroku_port)
