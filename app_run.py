@@ -49,6 +49,8 @@ def reply_text_message(event):
         reply_text = "1,Recent travel from or residence in an area with ongoing community spread of COVID-19 as determined by CDC or WHO.2,Close contact with someone who has COVID-19 — such as when a family member or health care worker takes care of an infected person"
     else：
         reply_text = text
+    message = TextSendMessage(reply_text)
+    line_bot_api.reply_message(event.reply_token, message)
 
 # if __name__ == "__main__":
 #     app.run()
