@@ -59,7 +59,8 @@ def reply_text_message(event):
         #finally, if not get replied yet:
         if not reply:
             reply = ChannelTalks.echo(event)
-
+    message = TextSendMessage(reply_text)
+    line_bot_api.reply_message(event.reply_token, message)
 
 if __name__ == "__main__":
     app.run()
