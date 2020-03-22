@@ -6,7 +6,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 import configparser
-
+from linebot.models import *
 from custom_models import ChannelTalks #, ChannelFlex, utils
 
 app = Flask(__name__)
