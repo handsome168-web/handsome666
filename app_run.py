@@ -47,6 +47,18 @@ def reply_text_message(event):
         reply_text = "1,clean your hands for at least 20 seconds with soap and water, or use an alcohol-based sanitiser with at least 70% alcohol.2,cover your sneeze or cough with your elbow or with tissue.3,avoid close contact with people who are ill.4,avoid touching your eyes, nose and mouth."
     elif (text == "risk factors"):
         reply_text = "1,Recent travel from or residence in an area with ongoing community spread of COVID-19 as determined by CDC or WHO.2,Close contact with someone who has COVID-19 — such as when a family member or health care worker takes care of an infected person"
+    elif event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa":
+        reply = False #not yet replied
+
+        #trying reply by condition:
+        if not reply:
+            reply = ChannelTalks.location_search(event)
+        #***
+        #To add other reply options
+        #***
+        #finally, if not get replied yet:
+        if not reply:
+            reply = ChannelTalks.echo(event)
     else:
         reply_text = text
     message = TextSendMessage(reply_text)
