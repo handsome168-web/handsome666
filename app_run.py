@@ -36,6 +36,7 @@ def callback():
         abort(400)
 
     return 'OK'
+
 HOST = "redis-13333.c56.east-us.azure.cloud.redislabs.com"
 PWD = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
 PORT = "13333"
@@ -50,6 +51,7 @@ redis1.set("symptoms", "Fever,Cough,Shortness of breath or difficulty breathing,
 @handler.add(MessageEvent, message=TextMessage)
 # list out all reply options:
 def reply_text_message(event):
+    print("Wilson is very handsome!")
     print(event)
     text = event.message.text
 
