@@ -10,18 +10,8 @@ from urllib.request import urlopen
 import configparser
 from linebot.models import *
 
-HOST = "redis-13333.c56.east-us.azure.cloud.redislabs.com"
-PWD = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
-PORT = "13333"
-
-redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
-
-redis1.set("symptoms", "Fever,Cough,Shortness of breath or difficulty breathing,Tiredness,Aches,Runny nose and Sore throat")
-# redis1.set("protection", "1,clean your hands for at least 20 seconds with soap and water, or use an alcohol-based sanitiser with at least 70% alcohol.2,cover your sneeze or cough with your elbow or with tissue.3,avoid close contact with people who are ill.4,avoid touching your eyes, nose and mouth.")
-# redis1.set("risk factors", "1,Recent travel from or residence in an area with ongoing community spread of COVID-19 as determined by CDC or WHO.2,Close contact with someone who has COVID-19 — such as when a family member or health care worker takes care of an infected person")
 
 # from custom_models import ChannelTalks #, ChannelFlex, utils
-
 app = Flask(__name__)
 
 # get LINE tokens from config.ini
@@ -46,6 +36,15 @@ def callback():
         abort(400)
 
     return 'OK'
+HOST = "redis-13333.c56.east-us.azure.cloud.redislabs.com"
+PWD = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
+PORT = "13333"
+
+redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
+
+redis1.set("symptoms", "Fever,Cough,Shortness of breath or difficulty breathing,Tiredness,Aches,Runny nose and Sore throat")
+# redis1.set("protection", "1,clean your hands for at least 20 seconds with soap and water, or use an alcohol-based sanitiser with at least 70% alcohol.2,cover your sneeze or cough with your elbow or with tissue.3,avoid close contact with people who are ill.4,avoid touching your eyes, nose and mouth.")
+# redis1.set("risk factors", "1,Recent travel from or residence in an area with ongoing community spread of COVID-19 as determined by CDC or WHO.2,Close contact with someone who has COVID-19 — such as when a family member or health care worker takes care of an infected person")
 
 # repeat text message
 @handler.add(MessageEvent, message=TextMessage)
