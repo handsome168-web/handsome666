@@ -42,7 +42,7 @@ def callback():
 
 # repeat text message
 @handler.add(MessageEvent, message=TextMessage)
-import redis
+# import redis
 # list out all reply options:
 def reply_text_message(event):
     print(event)
