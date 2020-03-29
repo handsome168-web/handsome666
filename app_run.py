@@ -49,7 +49,7 @@ def reply_text_message(event):
     text = event.message.text
 
     if (text == "symptoms of COVID-19" or text == "symptoms"):
-        reply_text = redis.get("symptoms").decode('UTF-8')
+        reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (text == "protection" or text == "precaution"):
         reply_text = "1,clean your hands for at least 20 seconds with soap and water, or use an alcohol-based sanitiser with at least 70% alcohol.2,cover your sneeze or cough with your elbow or with tissue.3,avoid close contact with people who are ill.4,avoid touching your eyes, nose and mouth."
     elif (text == "risk factors"):
