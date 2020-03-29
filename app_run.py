@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 import os
-# import redis
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
@@ -43,6 +42,7 @@ def callback():
 
 # repeat text message
 @handler.add(MessageEvent, message=TextMessage)
+import redis
 # list out all reply options:
 def reply_text_message(event):
     print(event)
