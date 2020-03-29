@@ -13,7 +13,7 @@ from linebot.models import *
 # PWD = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
 # PORT = "13333"
 
-redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
+# redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
 # from custom_models import ChannelTalks #, ChannelFlex, utils
 
 app = Flask(__name__)
