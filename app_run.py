@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 import os
+import redis
 from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
@@ -7,6 +8,12 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from urllib.request import urlopen
 import configparser
 from linebot.models import *
+
+HOST = "redis-13333.c56.east-us.azure.cloud.redislabs.com"
+PWD = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
+PORT = "13333"
+
+redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
 # from custom_models import ChannelTalks #, ChannelFlex, utils
 
 app = Flask(__name__)
