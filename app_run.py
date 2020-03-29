@@ -59,11 +59,11 @@ def reply_text_message(event):
     text = event.message.text
 
     if (text == "symptoms of COVID-19" or text == "symptoms"):
-        reply_text = reis1.get("symptoms")
+        reply_text = redis1.get("symptoms")
     elif (text == "protection" or text == "precaution"):
-        reply_text = reis1.get("protection")
+        reply_text = redis1.get("protection")
     elif (text == "risk factors"):
-        reply_text = reis1.get("risk factors")
+        reply_text = redis1.get("risk factors")
     elif (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
