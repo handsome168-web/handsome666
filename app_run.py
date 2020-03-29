@@ -50,7 +50,7 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
     text = text.strip()
-    if (re.findall("(symptoms)",text,re.I)[0] == "symptoms" or re.findall("(symptoms)",text,re.I)[0] == "Symptoms"):
+    if (re.findall("(symptoms)",text,re.I)[0] != none ):
         reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (text == "protection" or text == "precaution"):
         reply_text = redis1.get("protection").decode('UTF-8')   
