@@ -55,6 +55,7 @@ def reply_text_message(event):
     text = event.message.text
 
     if (text == "symptoms of COVID-19" or text == "symptoms"):
+        print("Wilson is handsome!")
         reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (text == "protection" or text == "precaution"):
         reply_text = redis1.get("protection").decode('UTF-8')
