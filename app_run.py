@@ -52,7 +52,7 @@ def reply_text_message(event):
     text = text.strip()
     if (re.findall("(symptom)",text,re.I)[0] != None):
         reply_text = redis1.get("symptoms").decode('UTF-8')
-    elif(re.findall("(feature)",text,re.I)[0] != None)
+    elif(re.findall("(feature)",text,re.I)[0] != None):
         reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (text == "protection" or text == "precaution"):
         reply_text = redis1.get("protection").decode('UTF-8')   
