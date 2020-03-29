@@ -8,11 +8,7 @@ from urllib.request import urlopen
 import configparser
 from linebot.models import *
 
-HOST = "redis-13333.c56.east-us.azure.cloud.redislabs.com"
-PWD = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824"
-PORT = "13333"
-
-redis1 = redis.Redis(host = HOST, password = PWD, port = PORT)
+redis1 = redis.Redis(host = "redis-13333.c56.east-us.azure.cloud.redislabs.com", password = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824", port = "13333")
 # from custom_models import ChannelTalks #, ChannelFlex, utils
 
 app = Flask(__name__)
