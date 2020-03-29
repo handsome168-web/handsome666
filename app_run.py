@@ -10,6 +10,9 @@ import configparser
 from linebot.models import *
 
 redis1 = redis.Redis(host = "redis-13333.c56.east-us.azure.cloud.redislabs.com", password = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824", port = "13333")
+redis1.set("symptoms","Fever,Cough,Shortness of breath or difficulty breathing,Tiredness,Aches,Runny nose and Sore throat")
+
+
 # from custom_models import ChannelTalks #, ChannelFlex, utils
 
 app = Flask(__name__)
@@ -46,7 +49,7 @@ def reply_text_message(event):
     text = event.message.text
 
     if (text == "symptoms of COVID-19" or text == "symptoms"):
-        reply_text = "Fever,Cough,Shortness of breath or difficulty breathing,Tiredness,Aches,Runny nose and Sore throat"
+        reply_text = redis.get("symptoms").decode('UTF-8')
     elif (text == "protection" or text == "precaution"):
         reply_text = "1,clean your hands for at least 20 seconds with soap and water, or use an alcohol-based sanitiser with at least 70% alcohol.2,cover your sneeze or cough with your elbow or with tissue.3,avoid close contact with people who are ill.4,avoid touching your eyes, nose and mouth."
     elif (text == "risk factors"):
