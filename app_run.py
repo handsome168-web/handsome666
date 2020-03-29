@@ -8,6 +8,7 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from urllib.request import urlopen
 import configparser
 from linebot.models import *
+import re
 
 redis1 = redis.Redis(host = "redis-13333.c56.east-us.azure.cloud.redislabs.com", password = "ubZLeDUxIKCYKBHK15dtY3TjfnmPw824", port = "13333")
 redis1.set("symptoms","Fever,Cough,Shortness of breath or difficulty breathing,Tiredness,Aches,Runny nose and Sore throat.")
@@ -48,7 +49,7 @@ def callback():
 def reply_text_message(event):
     print(event)
     text = event.message.text
-
+    text = text.strip()
     if (text == "symptoms of COVID-19" or text == "symptoms"):
         reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (text == "protection" or text == "precaution"):
