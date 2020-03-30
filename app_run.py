@@ -50,21 +50,23 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
     text = text.strip()
-    if text == '':
+        if text == '':
         continue
     try:
-        if (re.findall("(symptom)",text,re.I)[0] != None):
+        if (re.findall("symptom", text, re.I)[0] != None):
             reply_text = redis1.get("symptoms").decode('UTF-8')
     except:
         try:
-            if (re.findall("(protection)",text,re.I)[0] != None or re.findall("(precaution)",text,re.I)[0] != None):
-                reply_text = redis1.get("protection").decode('UTF-8') 
+            if (re.findall("(protection)", text, re.I)[0] != None or re.findall("(precaution)", text, re.I)[0] != None):
+                reply_text = redis1.get("protection").decode('UTF-8')
         except:
             try:
-                if (re.findall("(risk factors)",text,re.I)[0] != None):
-                    reply_text = redis1.get("risk factors").decode('UTF-8')  
+                if (re.findall("(risk factors)", text, re.I)[0] != None):
+                    reply_text = redis1.get("risk factors").decode('UTF-8')
             except:
                 reply_text = text
+
+    print(reply_text)
     if (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
