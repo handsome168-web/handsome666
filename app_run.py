@@ -50,7 +50,7 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
     text = text.strip()
-        if text == '':
+    if text == '':
         continue
     try:
         if (re.findall("symptom", text, re.I)[0] != None):
@@ -65,8 +65,6 @@ def reply_text_message(event):
                     reply_text = redis1.get("risk factors").decode('UTF-8')
             except:
                 reply_text = text
-
-    print(reply_text)
     if (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
