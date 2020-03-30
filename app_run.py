@@ -52,12 +52,12 @@ def reply_text_message(event):
     
     if (re.findall("(symptom)", text, re.I)):
         reply_text = redis1.get("symptoms").decode('UTF-8')
-    elif (re.findall("(protection)", text, re.I) or re.findall("(precaution)", text, re.I)):
+    if (re.findall("(protection)", text, re.I) or re.findall("(precaution)", text, re.I)):
         reply_text = redis1.get("protection").decode('UTF-8')
-    elif (re.findall("(risk)", text, re.I) or re.findall("(factor)", text, re.I):
+    if (re.findall("(risk)", text, re.I) or re.findall("(factor)", text, re.I):
         reply_text = redis1.get("risk factors").decode('UTF-8')
     
-    elif (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
+    if (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
         #trying reply by condition:
