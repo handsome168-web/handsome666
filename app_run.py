@@ -57,7 +57,7 @@ def reply_text_message(event):
     except:
         reply_text = text
     
-    elif (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
+    if (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
         #trying reply by condition:
