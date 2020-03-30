@@ -49,7 +49,7 @@ def callback():
 def reply_text_message(event):
     print(event)
     text = event.message.text
-    text = text.strip()
+#     text = text.strip()
     if text == '':
         continue
     try:
