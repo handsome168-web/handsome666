@@ -50,11 +50,11 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
     
-    if (re.findall("(symptom)", text, re.I)[0] != None):
+    if (re.findall("(symptom)", text, re.I)):
         reply_text = redis1.get("symptoms").decode('UTF-8')
-    elif (re.findall("(protection)", text, re.I)[0] != None or re.findall("(precaution)", text, re.I)[0] != None):
+    elif (re.findall("(protection)", text, re.I) or re.findall("(precaution)", text, re.I)):
         reply_text = redis1.get("protection").decode('UTF-8')
-    elif (re.findall("(risk factors)", text, re.I)[0] != None):
+    elif (re.findall("(risk factors)", text, re.I)):
         reply_text = redis1.get("risk factors").decode('UTF-8')
     
     elif (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
