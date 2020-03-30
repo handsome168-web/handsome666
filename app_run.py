@@ -51,9 +51,11 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
 
-    
-    if (re.findall("(symptom)", text, re.I)[0] != None):
-        reply_text = redis1.get("symptoms").decode('UTF-8')
+    try:
+        if (re.findall("(symptom)", text, re.I)[0] != None):
+            reply_text = redis1.get("symptoms").decode('UTF-8')
+    except:
+        reply_text = text
     
     elif (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
