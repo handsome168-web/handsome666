@@ -50,6 +50,8 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
     text = text.strip()
+    if text == '':
+        continue
     try:
         if (re.findall("(symptom)",text,re.I)[0] != None):
             reply_text = redis1.get("symptoms").decode('UTF-8')
