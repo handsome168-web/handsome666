@@ -50,13 +50,20 @@ def reply_text_message(event):
     print(event)
     text = event.message.text
 
-    if (text == "symptoms of COVID-19" or text == "symptoms"):
-        reply_text = redis1.get("symptoms").decode('UTF-8')
-    elif (text == "protection" or text == "precaution"):
-        reply_text = redis1.get("protection").decode('UTF-8')
-    elif (text == "risk factors"):
-        reply_text = redis1.get("risk factors").decode('UTF-8')
-    elif (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
+    try:
+        if (re.findall("symptom", text, re.I)[0] != None):
+            reply_text = redis1.get("symptoms").decode('UTF-8')
+    except:
+        try:
+            if (re.findall("(protection)", text, re.I)[0] != None or re.findall("(precaution)", text, re.I)[0] != None):
+                reply_text = redis1.get("protection").decode('UTF-8')
+        except:
+            try:
+                if (re.findall("(risk factors)", text, re.I)[0] != None):
+                    reply_text = redis1.get("risk factors").decode('UTF-8')
+            except:
+                reply_text = text
+    if (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
         #trying reply by condition:
