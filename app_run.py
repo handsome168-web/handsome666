@@ -64,7 +64,8 @@ def reply_text_message(event):
                 if (re.findall("(risk factors)", text, re.I)[0] != None):
                     reply_text = redis1.get("risk factors").decode('UTF-8')
             except:
-                reply_text = text
+                pass
+    reply_text = text
     if (event.source.user_id != "Udeadbeefdfeadfsdlkfdasofjewa"):
         reply = False #not yet replied
 
