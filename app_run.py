@@ -50,8 +50,7 @@ def callback():
 # import redis
 # list out all reply options:
 def reply_text_message(event):
-    text = event.message.text
-    
+    text = event.message.text    
     try:
         conn = http.client.HTTPSConnection("covid-193.p.rapidapi.com")
         headers = {
@@ -63,11 +62,11 @@ def reply_text_message(event):
         conn.request("GET", "/statistics?country="+country, headers=headers)
         res = conn.getresponse()
         data = res.read()
-        content = json.loads(data)['response'][0]
-        
+        content = json.loads(data)['response'][0]        
         reply_text = str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
     except:
         pass
+    
     if (re.findall("(symptom)", text, re.I)):
         reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (re.findall("(protection)", text, re.I) or re.findall("(precaution)", text, re.I)):
