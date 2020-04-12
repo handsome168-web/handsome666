@@ -58,12 +58,15 @@ def reply_text_message(event):
         'x-rapidapi-key': "c292695aa2msh54c80405779f4a8p1695ddjsn47c37deef73b"
         }
     country = text
-    conn.request("GET", "/statistics?country="+country, headers=headers)
-    res = conn.getresponse()
-    data = res.read()
-    content = json.loads(data)['response'][0]
-    if(content!=none)
-        reply_text=str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
+    try:
+        conn.request("GET", "/statistics?country="+country, headers=headers)
+        res = conn.getresponse()
+        data = res.read()
+        content = json.loads(data)['response'][0]
+        if(content!=none)
+            reply_text=str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
+    except:
+        pass
     if (re.findall("(symptom)", text, re.I)):
         reply_text = redis1.get("symptoms").decode('UTF-8')
     elif (re.findall("(protection)", text, re.I) or re.findall("(precaution)", text, re.I)):
