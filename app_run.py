@@ -51,6 +51,7 @@ def callback():
 # list out all reply options:
 def reply_text_message(event):
     text = event.message.text
+    country = text
     try:
         conn = http.client.HTTPSConnection("covid-193.p.rapidapi.com")
 
