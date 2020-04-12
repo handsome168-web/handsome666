@@ -54,7 +54,6 @@ def reply_text_message(event):
     
     try:
         conn = http.client.HTTPSConnection("covid-193.p.rapidapi.com")
-
         headers = {
             'x-rapidapi-host': "covid-193.p.rapidapi.com",
             'x-rapidapi-key': "c292695aa2msh54c80405779f4a8p1695ddjsn47c37deef73b"
