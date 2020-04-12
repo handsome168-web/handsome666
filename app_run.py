@@ -63,8 +63,8 @@ def reply_text_message(event):
         res = conn.getresponse()
         data = res.read()
         content = json.loads(data)['response'][0]
-        if(content!=none)
-            reply_text=str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
+        
+        reply_text=str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
     except:
         pass
     if (re.findall("(symptom)", text, re.I)):
