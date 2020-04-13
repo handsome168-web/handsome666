@@ -56,14 +56,17 @@ def reply_text_message(event):
         headers = {
             'x-rapidapi-host': "covid-193.p.rapidapi.com",
             'x-rapidapi-key': "c292695aa2msh54c80405779f4a8p1695ddjsn47c37deef73b"
-            }
+        }
+    # country = event.message.text
         country = text
-   
-        conn.request("GET", "/statistics?country="+country, headers=headers)
+        conn.request("GET", "/statistics?country=" + country, headers=headers)
         res = conn.getresponse()
         data = res.read()
-        content = json.loads(data)['response'][0]       
-        reply_text = str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
+        content = json.loads(data)['response'][0]
+
+        reply_text = str(content['country']) + '\n' + 'cases:' + str(content['cases']) + '\n' + 'deaths:' + str(
+            content['deaths']) + '\n' + 'tests:' + str(content['tests']) + '\n' + 'time:' + str(content['day'])
+        print(reply_text)   
     except:
         pass
     
