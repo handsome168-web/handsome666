@@ -66,7 +66,7 @@ def reply_text_message(event):
 
         reply_text = str(content['country']) + '\n' + 'cases:' + str(content['cases']) + '\n' + 'deaths:' + str(
             content['deaths']) + '\n' + 'tests:' + str(content['tests']) + '\n' + 'time:' + str(content['day'])
-        print(reply_text)   
+#         print(reply_text)   
     except:
         pass
     
