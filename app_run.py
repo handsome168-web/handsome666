@@ -62,7 +62,7 @@ def reply_text_message(event):
         conn.request("GET", "/statistics?country="+country, headers=headers)
         res = conn.getresponse()
         data = res.read()
-        content = json.loads(data)['response'][0]        
+        content = json.loads(data)['response'][0].decode('UTF-8')        
         reply_text = str(content['country'])+'\n'+'cases:'+str(content['cases'])+'\n'+'deaths:'+str(content['deaths'])+'\n'+'tests:'+str(content['tests'])+'\n'+'time:'+str(content['day'])    
     except:
         pass
